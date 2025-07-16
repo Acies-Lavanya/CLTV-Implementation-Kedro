@@ -1,12 +1,14 @@
 """Project settings. There is no need to edit this file unless you want to change values
 from the Kedro defaults. For further information, including these default values, see
 https://docs.kedro.org/en/stable/kedro_project_setup/settings.html."""
-
+from dotenv import load_dotenv
+import os
+from pathlib import Path
 # Instantiated project hooks.
-from cltv_implementation.hooks import SparkHooks  # noqa: E402
-
+#from cltv_implementation.hooks import SparkHooks  # noqa: E402
+load_dotenv(dotenv_path=Path(__file__).resolve().parents[2] / ".env")
 # Hooks are executed in a Last-In-First-Out (LIFO) order.
-HOOKS = (SparkHooks(),)
+#HOOKS = (SparkHooks(),)
 
 # Installed plugins for which to disable hook auto-registration.
 # DISABLE_HOOKS_FOR_PLUGINS = ("kedro-viz",)

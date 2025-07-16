@@ -21,3 +21,8 @@ preprocessed_customer:
 preprocessed_behavioral:
   filepath: data/02_intermediate/preprocessed_behavioral.csv
   type: pandas.CSVDataset
+
+rfm_output:
+  filepath: data/04_feature/rfm_output.csv
+  type: pandas.CSVDataset
+  
