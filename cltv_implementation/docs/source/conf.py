@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-# cltv_implementation documentation build
+# new_kedro_project documentation build
 # configuration file, created by sphinx-quickstart.
 #
 # This file is execfile()d with the current directory set to its
@@ -20,11 +20,11 @@
 import re
 
 from kedro.framework.cli.utils import find_stylesheets
-from cltv_implementation import __version__ as release
+from new_kedro_project import __version__ as release
 
 # -- Project information -----------------------------------------------------
 
-project = "cltv_implementation"
+project = "new_kedro_project"
 author = "Kedro"
 
 # The short X.Y version.
@@ -120,7 +120,7 @@ html_show_copyright = False
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "cltv_implementationdoc"
+htmlhelp_basename = "new_kedro_projectdoc"
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -148,8 +148,8 @@ latex_elements = {
 latex_documents = [
     (
         master_doc,
-        "cltv_implementation.tex",
-        "cltv_implementation Documentation",
+        "new_kedro_project.tex",
+        "new_kedro_project Documentation",
         "Kedro",
         "manual",
     )
@@ -162,8 +162,8 @@ latex_documents = [
 man_pages = [
     (
         master_doc,
-        "cltv_implementation",
-        "cltv_implementation Documentation",
+        "new_kedro_project",
+        "new_kedro_project Documentation",
         [author],
         1,
     )
@@ -177,11 +177,11 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "cltv_implementation",
-        "cltv_implementation Documentation",
+        "new_kedro_project",
+        "new_kedro_project Documentation",
         author,
-        "cltv_implementation",
-        "Project cltv_implementation codebase.",
+        "new_kedro_project",
+        "Project new_kedro_project codebase.",
         "Data-Science",
     )
 ]

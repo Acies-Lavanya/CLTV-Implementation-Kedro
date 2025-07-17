@@ -1,0 +1,6 @@
+customer_id: [Customer ID, cust_id, user_id, uid]
+purchase_date: [Purchase Date, purchase_date, transaction_date, Date]
+revenue: [revenue, amount, total_amount, Total Payable, amount_payable]
+transaction_id: [Transaction ID, transaction_id, txn_id]
+order_id: [Order ID, order_id]
+payment_method: [Payment Method, payment_method, Mode of Payment]

@@ -1,0 +1,11 @@
+kedro-datasets[pandas.CSVDataset, pandas.ParquetDataset, pandas.ExcelDataset, pandas.JSONDataset, pandas.SQLTableDataset]==1.5.0
+kedro-viz>=6.7.0
+kedro[jupyter]~=0.19.14
+notebook
+scikit-learn~=1.5.1
+setuptools; python_version >= "3.12"
+jupyterlab==4.2.1
+ipython==8.24.0
+black==24.4.2
+isort==5.13.2
+pre-commit==3.7.1

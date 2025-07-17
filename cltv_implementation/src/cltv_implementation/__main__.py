@@ -1,5 +1,5 @@
-"""cltv_implementation file for ensuring the package is executable
-as `cltv-implementation` and `python -m cltv_implementation`
+"""New Kedro Project file for ensuring the package is executable
+as `new-kedro-project` and `python -m new_kedro_project`
 """
 import sys
 from pathlib import Path

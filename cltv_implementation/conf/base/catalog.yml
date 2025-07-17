@@ -1,0 +1,28 @@
+raw_transactional:
+  filepath: data/01_raw/Transactional.csv
+  type: pandas.CSVDataset
+
+raw_customer:
+  filepath: data/01_raw/Customer.csv
+  type: pandas.CSVDataset
+
+raw_behavioral:
+  filepath: data/01_raw/Behavioral.csv
+  type: pandas.CSVDataset
+
+preprocessed_transactional:
+  filepath: data/02_intermediate/preprocessed_transactional.csv
+  type: pandas.CSVDataset
+
+preprocessed_customer:
+  filepath: data/02_intermediate/preprocessed_customer.csv
+  type: pandas.CSVDataset
+
+preprocessed_behavioral:
+  filepath: data/02_intermediate/preprocessed_behavioral.csv
+  type: pandas.CSVDataset
+
+rfm_output:
+  filepath: data/04_feature/rfm_output.csv
+  type: pandas.CSVDataset
+  

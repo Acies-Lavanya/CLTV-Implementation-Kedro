@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-"cltv-implementation" = "cltv_implementation.__main__:main"
+"cltv_implementation" = "cltv_implementation.__main__:main"
 
 [project.entry-points."kedro.hooks"]
 
@@ -84,3 +84,6 @@ select = [
     "T201", # Print Statement
 ]
 ignore = ["E501"]  # Ruff format takes care of line-too-long
+
+[tool.kedro_telemetry]
+project_id = "aa86b9bb9ee54ab1826a6a1a8a44b9cf"
