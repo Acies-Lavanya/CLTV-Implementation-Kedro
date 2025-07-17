@@ -22,7 +22,11 @@ preprocessed_behavioral:
   filepath: data/02_intermediate/preprocessed_behavioral.csv
   type: pandas.CSVDataset
 
-rfm_output:
-  filepath: data/04_feature/rfm_output.csv
+transactions_df:
   type: pandas.CSVDataset
-  
+  filepath: data/01_raw/Transactional.csv
+
+bg_nbd_cltv_output:
+  type: pandas.CSVDataset
+  filepath: data/07_model_output/bg_nbd_cltv_output.csv
+

@@ -2,9 +2,10 @@ from __future__ import annotations
 import os, json
 from kedro.pipeline import Pipeline
 
-# 1️⃣  Import the pipeline‑factory functions (not the modules)
+# 1️⃣ Import the pipeline-factory functions
 from cltv_implementation.pipelines.preprocess.pipeline import create_pipeline as create_preprocess_pipeline
 from cltv_implementation.pipelines.feature_engineering.pipeline import create_pipeline as create_rfm_pipeline
+from cltv_implementation.pipelines.bg_nbd_model.pipeline import create_pipeline as create_bg_nbd_pipeline  # 👈 NEW
 
 def register_pipelines() -> dict[str, Pipeline]:
     # ── Read selected tables from env var ──────────────────────────────
@@ -20,7 +21,9 @@ def register_pipelines() -> dict[str, Pipeline]:
     # RFM pipeline always runs
     pipelines.append(create_rfm_pipeline())
 
+    # BG/NBD pipeline
+    pipelines.append(create_bg_nbd_pipeline())
+
     # ── Combine and return ─────────────────────────────────────────────
     master_pipeline = sum(pipelines, Pipeline([]))
     return {"__default__": master_pipeline}
-
