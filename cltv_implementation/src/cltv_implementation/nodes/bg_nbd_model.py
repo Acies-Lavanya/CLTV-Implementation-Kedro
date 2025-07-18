@@ -48,4 +48,5 @@ def train_bg_nbd_model(transactions_df: pd.DataFrame) -> pd.DataFrame:
     )
 
     summary_df = summary_df.reset_index()
-    return summary_df[['user_id', 'predicted_cltv_3m']]
+    # return summary_df[['user_id', 'predicted_cltv_3m']]
+    return summary_df
