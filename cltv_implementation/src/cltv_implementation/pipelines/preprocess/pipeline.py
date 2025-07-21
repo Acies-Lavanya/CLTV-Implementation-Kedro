@@ -1,28 +1,37 @@
 from kedro.pipeline import Pipeline, node, pipeline
 from cltv_implementation.nodes.preprocess import (
     preprocess_transactional,
-    preprocess_behavioral,
     preprocess_customer,
+    preprocess_behavioral,
 )
 
-def create_pipeline(selected_tables: list[str] = None) -> Pipeline:
-    selected_tables = selected_tables or ["transactional"]  # default if none given
-
-    pipeline_nodes = []
-
-    if "transactional" in selected_tables:
-        pipeline_nodes.append(
-            node(preprocess_transactional, inputs="raw_transactional", outputs="preprocessed_transactional", name="preprocess_transactional_node")
-        )
-
-    if "customer" in selected_tables:
-        pipeline_nodes.append(
-            node(preprocess_customer, inputs="raw_customer", outputs="preprocessed_customer", name="preprocess_customer_node")
-        )
-
-    if "behavioral" in selected_tables:
-        pipeline_nodes.append(
-            node(preprocess_behavioral, inputs="raw_behavioral", outputs="preprocessed_behavioral", name="preprocess_behavioral_node")
-        )
-
-    return pipeline(pipeline_nodes)
+def create_pipeline() -> Pipeline:
+    return pipeline([
+        node(
+    func=preprocess_transactional,
+    inputs=dict(
+        df="raw_transactional",
+        selected_tables="params:selected_tables"
+    ),
+    outputs="preprocessed_transactional",
+    name="preprocess_transactional_node"
+),
+        node(
+            func=preprocess_customer,
+            inputs=dict(
+                df="raw_customer",
+                selected_tables="params:selected_tables"
+            ),
+            outputs="preprocessed_customer",
+            name="preprocess_customer_node"
+        ),
+        node(
+            func=preprocess_behavioral,
+            inputs=dict(
+                df="raw_behavioral",
+                selected_tables="params:selected_tables"
+            ),
+            outputs="preprocessed_behavioral",
+            name="preprocess_behavioral_node"
+        ),
+    ])

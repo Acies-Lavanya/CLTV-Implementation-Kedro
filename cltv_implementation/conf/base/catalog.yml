@@ -13,6 +13,7 @@ raw_behavioral:
 preprocessed_transactional:
   filepath: data/02_intermediate/preprocessed_transactional.csv
   type: pandas.CSVDataset
+  
 
 preprocessed_customer:
   filepath: data/02_intermediate/preprocessed_customer.csv
@@ -22,7 +23,11 @@ preprocessed_behavioral:
   filepath: data/02_intermediate/preprocessed_behavioral.csv
   type: pandas.CSVDataset
 
-rfm_output:
-  filepath: data/04_feature/rfm_output.csv
-  type: pandas.CSVDataset
   
+user_level_table:
+  filepath: data/03_primary/user_level_table.csv
+  type: pandas.CSVDataset
+
+transaction_with_bgnbd:
+  filepath: data/03_primary/transaction_with_bgnbd.csv
+  type: pandas.CSVDataset

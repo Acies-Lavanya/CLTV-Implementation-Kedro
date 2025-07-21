@@ -5,6 +5,7 @@
 conf/local/**
 !conf/local/.gitkeep
 venv/
+cltv_implementation\notebooks\models.ipynb
 # ignore potentially sensitive credentials files
 conf/**/*credentials*
 

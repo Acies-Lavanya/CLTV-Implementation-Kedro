@@ -3,7 +3,10 @@ import pandas as pd
 from cltv_implementation.nodes.column_mapper import standardize_columns
 
 # ───────────────────────────────────────────────────────────
-def preprocess_transactional(df: pd.DataFrame) -> pd.DataFrame:
+def preprocess_transactional(df: pd.DataFrame, selected_tables: list[str]) -> pd.DataFrame:
+    if "transactional" not in selected_tables:
+        return df.head(0)
+
     df = standardize_columns(df, data_type="transactional")
 
     if "purchase_date" in df.columns:
@@ -14,11 +17,10 @@ def preprocess_transactional(df: pd.DataFrame) -> pd.DataFrame:
     df["revenue"] = pd.to_numeric(df["revenue"], errors="coerce").fillna(0.0)
 
     return df.reset_index(drop=True)
-
 # ───────────────────────────────────────────────────────────
-def preprocess_customer(df: pd.DataFrame | None) -> pd.DataFrame | None:
-    if df is None:
-        return None
+def preprocess_customer(df: pd.DataFrame, selected_tables: list[str]) -> pd.DataFrame | None:
+    if "customer" not in selected_tables or df is None:
+        return df.head(0) if df is not None else None
 
     df = standardize_columns(df, data_type="customer")
     df["customer_id"] = df["customer_id"].astype(str)
@@ -32,9 +34,9 @@ def preprocess_customer(df: pd.DataFrame | None) -> pd.DataFrame | None:
     return df.drop_duplicates("customer_id").reset_index(drop=True)
 
 # ───────────────────────────────────────────────────────────
-def preprocess_behavioral(df: pd.DataFrame | None) -> pd.DataFrame | None:
-    if df is None:
-        return None
+def preprocess_behavioral(df: pd.DataFrame | None, selected_tables: list[str]) -> pd.DataFrame | None:
+    if "behavioral" not in selected_tables or df is None:
+        return df.head(0) if df is not None else None
 
     df = standardize_columns(df, data_type="behavioral")
 

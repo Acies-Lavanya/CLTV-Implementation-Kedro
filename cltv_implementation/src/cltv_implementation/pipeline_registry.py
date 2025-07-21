@@ -1,26 +1,24 @@
-from __future__ import annotations
-import os, json
 from kedro.pipeline import Pipeline
+from kedro.config import OmegaConfigLoader
+from cltv_implementation.pipelines.preprocess.pipeline import create_pipeline as create_preprocessing_pipeline
+from cltv_implementation.pipelines.feature_engineering.pipeline import create_pipeline as create_user_level_pipeline
+from cltv_implementation.pipelines.bg_nbd.pipeline import create_pipeline as create_bg_nbd_table
+def register_pipelines():
+    config_loader = OmegaConfigLoader(conf_source="conf")
+    parameters = config_loader.get("parameters*") or {}
+    selected_tables = parameters.get("selected_tables")
+    print("📌 DEBUG: Selected tables from parameters:", selected_tables)
 
-# 1️⃣  Import the pipeline‑factory functions (not the modules)
-from cltv_implementation.pipelines.preprocess.pipeline import create_pipeline as create_preprocess_pipeline
-from cltv_implementation.pipelines.feature_engineering.pipeline import create_pipeline as create_rfm_pipeline
+    # Always include transactional preprocess
+    preprocessing = create_preprocessing_pipeline()
 
-def register_pipelines() -> dict[str, Pipeline]:
-    # ── Read selected tables from env var ──────────────────────────────
-    params = json.loads(os.getenv("KEDRO_PARAMS", "{}"))
-    selected_tables = params.get("selected_tables", [])
+    # Always include user level merge
+    user_level = create_user_level_pipeline()
 
-    # ── Build pipelines list ───────────────────────────────────────────
-    pipelines: list[Pipeline] = []
-
-    # transactional is mandatory; build preprocess pipeline with selector
-    pipelines.append(create_preprocess_pipeline(selected_tables=selected_tables))
-
-    # RFM pipeline always runs
-    pipelines.append(create_rfm_pipeline())
-
-    # ── Combine and return ─────────────────────────────────────────────
-    master_pipeline = sum(pipelines, Pipeline([]))
-    return {"__default__": master_pipeline}
-
+    model_level = create_bg_nbd_table()
+    return {
+        "__default__": preprocessing + model_level + user_level,
+        "preprocessing_only": preprocessing,
+        "user_level_only": user_level,
+        "model_only": model_level,
+    }
