@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/new_kedro_project/__init__.py
+src/new_kedro_project/__main__.py
+src/new_kedro_project/hooks.py
+src/new_kedro_project/pipeline_registry.py
+src/new_kedro_project/settings.py
+src/new_kedro_project.egg-info/PKG-INFO
+src/new_kedro_project.egg-info/SOURCES.txt
+src/new_kedro_project.egg-info/dependency_links.txt
+src/new_kedro_project.egg-info/entry_points.txt
+src/new_kedro_project.egg-info/requires.txt
+src/new_kedro_project.egg-info/top_level.txt
+src/new_kedro_project/pipelines/__init__.py
+tests/test_run.py

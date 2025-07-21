@@ -1,0 +1,2 @@
+[console_scripts]
+new-kedro-project = new_kedro_project.__main__:main
